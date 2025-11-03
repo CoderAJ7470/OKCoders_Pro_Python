@@ -1,0 +1,21 @@
+# Python cache files
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env/
+.env
+.venv/
+
+# IDE / Editor settings
+.vscode/
+.idea/
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
