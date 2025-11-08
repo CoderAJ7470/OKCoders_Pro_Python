@@ -14,7 +14,7 @@
 
 # 9. Write code that prints "Hello" if "1" is stored in "spam", "Howdy" if "2" is stored in "spam", and "Greetings!" if anything else is stored in "spam".
 
-spam = 'yo'
+spam = 'yo, wasssaaaaaaap!' # If you know, you know
 
 if spam == 1:
     print('Hello')
