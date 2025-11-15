@@ -74,7 +74,7 @@ def add_course_and_grade():
 
         print(f'Successfully added "{course_name}" and the grade of "{course_grade}" for {student_name} in the records.')
 
-def get_student_GPA():
+def get_student_GPA_by_name():
     match_found = False
     matched_name = ''
 
@@ -138,22 +138,26 @@ def show_student_report():
         for i in range(len(courses)):
             print(f'{courses[i]}: {grades[i]}')
 
-        # Get student GPA
-        GPA = calculate_GPA(student) 
+        # Calculate and print the student's GPA
+        calculate_GPA(student) 
 
         # Because we have a list from the students dictionary, we can check to see if we have reached the last index. We do not want this separator after the last student.
         if student != student_list[-1]:
             print('-------------------')
 
+# Shows all students taking a particular course
 def show_students_by_course():
     students_taking_course = []
-    course_name = input('Please enter the name of the course: ')
+    course_name = input('Please enter the name of the course: ').lower()
     names = ''
 
     for name, info in students.items():
         current_student_courses = info['Courses']
 
-        if course_name in current_student_courses:
+        # Convert all of the current student's courses to lower case for case-agnostic matching
+        courses_lowercase = [c.lower() for c in current_student_courses]
+
+        if course_name in courses_lowercase:
             students_taking_course.append(name)
 
     for student in students_taking_course:
@@ -162,7 +166,7 @@ def show_students_by_course():
         else:
             names += student
 
-    print(f'Students taking {course_name}: {names}')
+    print(f'Students taking {course_name.title()}: {names}')
     
 # Shows the user a list from which they can choose, by entering the corresponding number
 def show_choices():
@@ -184,7 +188,7 @@ def show_choices():
         elif choice == '4':
             show_students_by_course()
         elif choice == '5':
-            get_student_GPA()
+            get_student_GPA_by_name()
         else:
             print(f'\nSorry, {choice} is not a valid choice. Please enter a number corresponding to one of the choices below, and hit Enter:\n')
         
