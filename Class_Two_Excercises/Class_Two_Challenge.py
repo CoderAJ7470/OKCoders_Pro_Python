@@ -1,4 +1,5 @@
 # Create a to-do list with the options to add/remove items, and mark items as complete
+# Also allows the user to update/edit any todo item, its priority and/or status
 
 import os
 import json
