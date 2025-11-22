@@ -1,0 +1,16 @@
+2025-02-10 14:35:11 INFO  User - Alice Springs
+2025-02-10 14:35:12 INFO  User login attempt from alice.springs@email.aus
+2025-02-10 14:35:13 ERROR Authentication failed for user alice.springs@email.aus: invalid password
+2025-02-10 14:35:14 WARN  Rate limit exceeded for IP 192.168.1.54
+
+2025-02-10 14:35:11 INFO  User - Mary Smith
+2025-02-10 15:02:45 INFO  Password reset request sent to mary.smith@company.org
+2025-02-10 15:02:47 ERROR Failed to send reset email to mary.smith@company.org: SMTP timeout
+
+2025-02-10 14:35:11 INFO  User - April Showers
+2025-02-10 16:11:08 INFO  New user registered: april.showers@gmail.com
+2025-02-10 18:11:09 ERROR Database insertion error for user april.showers@gmail.com: duplicate key value violates unique constraint
+
+2025-02-10 14:35:11 INFO  User - Pete Zaa
+2025-02-10 19:45:33 INFO  User logout: pete.zaa@pies.com
+2025-02-10 19:45:34 ERROR Unknown system exception occurred while logging out user pete.zaa@pies.com

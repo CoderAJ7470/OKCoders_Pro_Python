@@ -10,6 +10,7 @@ todo_items = []
 
 FILE_PATH: string
 
+# Specifying the exact file path of Todos.json and returning it - used in the read_todos_from_file() function - see below (or find with Ctrl + F). Basically, we cannot just pass the Todos.json filename directly to the open() function in read_todos_from_file(), since Python will look in the top-level directory for that file, and the code will fail
 def get_file_path_for_todos_file() -> string:
     FILE_PATH = os.path.join(os.path.dirname(__file__), 'Todos.json')
 
