@@ -43,12 +43,12 @@ def show_top_ten_grossing_movies_worldwide():
         LIMIT 10;
     '''
     
-    rows = movie_db.execute(query).fetchall()
+    top_grossing_rows = movie_db.execute(query).fetchall()
     
     print('\nShowing top ten worldwide-grossing movies from 2007-2011, in descending order:\n')
     
-    for row in rows:
-        print(row)
+    for film, genre, gross_profit in enumerate(top_grossing_rows):
+        print(f'{film} ({genre}) — {gross_profit} million')
         
     movie_db.close()
 
@@ -64,10 +64,31 @@ def show_top_ten_profitable_movies():
     
     top_profitable_rows = movie_db.execute(query).fetchall()
     
-    print('\nShowing top ten profitable movies from 2007-2011, in descending order:\n')
+    print('\nShowing top ten profitable movies from 2007-2011, in descending order. The higher the profitability ratio, the more profit the movie made.\n')
     
     for film, genre, profit in top_profitable_rows:
         print(f'{film} ({genre}) — Profitability: {float(profit):.2f}')
+        
+    movie_db.close()
+    
+def movies_by_top_ten_audience_percentages():
+    movie_db = sqlite3.connect('movie_data.db', isolation_level = None)
+    
+    query = '''
+        SELECT Film, Genre, Audience_Score_Pct
+        FROM movie_data
+        ORDER BY CAST(Audience_Score_Pct AS INTEGER) DESC
+        LIMIT 10;
+    '''
+    
+    audience_percentage_rows = movie_db.execute(query).fetchall()
+    
+    print('Showing movies with the top 10 audience score percentages\n:')
+    
+    for film ,genre, audience_percentage in audience_percentage_rows:
+        print(f'{film} ({genre}) - {audience_percentage}%')
+        
+    movie_db.close()
 
 def print_movie_db():
     movie_db = sqlite3.connect('movie_data.db', isolation_level = None)
@@ -82,13 +103,40 @@ def show_user_options():
     print('''
           1. Show 
           ''')
+    
+def show_user_menu():
+    # Storing menu option in this dictionary; allow for additional choices to be added later if required
+    menu_options = {
+        "1": ('Show top 10 worldwide-grossing movies', show_top_ten_grossing_movies_worldwide),
+        "2": ('Show top 10 profitable movies', show_top_ten_profitable_movies),
+        "3": ('Show movies by top 10 audience percentages', movies_by_top_ten_audience_percentages),
+        "4": ('Print all movie data', print_movie_db),
+    }
+    
+    print('Welcome! This program allows you to load a movie database and perform select actions with that data. Enter "q" anytime to quit.\n')
+
+    while True:
+        # Show menu options
+        for key, (label, _) in menu_options.items():
+            print(f'{key}. {label}')
+
+        choice = input("\nEnter your choice here: ").strip()
+
+        if choice.lower() == "q":
+            break
+
+        # Validate menu choice
+        if choice not in menu_options:
+            print("Invalid option — please choose a valid number.")
+            continue
+        
+        # menu_options[choice] returns a tuple, from which you can select the label and the function, based on which option (choice) the user selected
+        selected_label, selected_function = menu_options[choice]
+
+        print(f'\nYou selected: {selected_label}\n')
+        selected_function() # Run the function selected by the user/chosen from the menu
+        
+        print('\nKeep choosing, or q to quit:\n')
 
 if __name__ == '__main__':
-    # This step is already done; putting it here for step-wise illustration. This function also stores the csv data into the sqlite db:
-    # read_csv_file_into_db()
-    
-    # print_movie_db()
-    
-    # show_top_ten_grossing_movies_worldwide()
-    
-    show_top_ten_profitable_movies()
+    show_user_menu()
