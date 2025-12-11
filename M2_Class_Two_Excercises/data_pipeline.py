@@ -47,8 +47,8 @@ def show_top_ten_grossing_movies_worldwide():
     
     print('\nShowing top ten worldwide-grossing movies from 2007-2011, in descending order:\n')
     
-    for film, genre, gross_profit in enumerate(top_grossing_rows):
-        print(f'{film} ({genre}) — {gross_profit} million')
+    for index, (film, genre, gross_profit) in enumerate(top_grossing_rows, start = 1):
+        print(f'{index}. {film} ({genre}) — {gross_profit} million')
         
     movie_db.close()
 
@@ -64,10 +64,10 @@ def show_top_ten_profitable_movies():
     
     top_profitable_rows = movie_db.execute(query).fetchall()
     
-    print('\nShowing top ten profitable movies from 2007-2011, in descending order. The higher the profitability ratio, the more profit the movie made.\n')
+    print('\nShowing top ten profitable movies from 2007-2011, in descending order. The higher the profitability ratio, the more profit the movie made:\n')
     
-    for film, genre, profit in top_profitable_rows:
-        print(f'{film} ({genre}) — Profitability: {float(profit):.2f}')
+    for index, (film, genre, profit) in enumerate(top_profitable_rows, start = 1):
+        print(f'{index}. {film} ({genre}) — Profitability: {float(profit):.2f}')
         
     movie_db.close()
     
@@ -83,10 +83,10 @@ def movies_by_top_ten_audience_percentages():
     
     audience_percentage_rows = movie_db.execute(query).fetchall()
     
-    print('Showing movies with the top 10 audience score percentages\n:')
+    print('Showing movies with the top 10 audience score percentages:\n')
     
-    for film ,genre, audience_percentage in audience_percentage_rows:
-        print(f'{film} ({genre}) - {audience_percentage}%')
+    for index, (film ,genre, audience_percentage) in enumerate(audience_percentage_rows, start = 1):
+        print(f'{index}. {film} ({genre}) - {audience_percentage}%')
         
     movie_db.close()
 
@@ -94,23 +94,16 @@ def print_movie_db():
     movie_db = sqlite3.connect('movie_data.db', isolation_level = None)
     rows = movie_db.execute('SELECT * FROM movie_data').fetchall()
    
-    for row in rows:
-        print(row) # prints each tuple (row) in the db
-        
+    for index, row in enumerate(rows, start = 1):
+        print(index, row) # prints each tuple (row) in the db
+    
 def show_user_options():
-    print('\nWelcome! Please choose from the following options (enter "q" anytime to quit):\n')
-    
-    print('''
-          1. Show 
-          ''')
-    
-def show_user_menu():
     # Storing menu option in this dictionary; allow for additional choices to be added later if required
     menu_options = {
-        "1": ('Show top 10 worldwide-grossing movies', show_top_ten_grossing_movies_worldwide),
-        "2": ('Show top 10 profitable movies', show_top_ten_profitable_movies),
-        "3": ('Show movies by top 10 audience percentages', movies_by_top_ten_audience_percentages),
-        "4": ('Print all movie data', print_movie_db),
+        '1': ('Show top 10 worldwide-grossing movies', show_top_ten_grossing_movies_worldwide),
+        '2': ('Show top 10 profitable movies', show_top_ten_profitable_movies),
+        '3': ('Show movies by top 10 audience percentages', movies_by_top_ten_audience_percentages),
+        '4': ('Print all movie data', print_movie_db),
     }
     
     print('Welcome! This program allows you to load a movie database and perform select actions with that data. Enter "q" anytime to quit.\n')
@@ -139,4 +132,4 @@ def show_user_menu():
         print('\nKeep choosing, or q to quit:\n')
 
 if __name__ == '__main__':
-    show_user_menu()
+    show_user_options()
