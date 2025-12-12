@@ -1,0 +1,158 @@
+{
+    "Top 10 Worldwide Grossing Movies": [
+        {
+            "Film": "The Twilight Saga: New Moon",
+            "Genre": "Drama",
+            "Worldwide_Gross": "$709.82 "
+        },
+        {
+            "Film": "Twilight: Breaking Dawn",
+            "Genre": "Romance",
+            "Worldwide_Gross": "$702.17 "
+        },
+        {
+            "Film": "Mamma Mia!",
+            "Genre": "Comedy",
+            "Worldwide_Gross": "$609.47 "
+        },
+        {
+            "Film": "WALL-E",
+            "Genre": "Animation",
+            "Worldwide_Gross": "$521.28 "
+        },
+        {
+            "Film": "Sex and the City",
+            "Genre": "Comedy",
+            "Worldwide_Gross": "$415.25 "
+        },
+        {
+            "Film": "Twilight",
+            "Genre": "Romance",
+            "Worldwide_Gross": "$376.66 "
+        },
+        {
+            "Film": "Tangled",
+            "Genre": "Animation",
+            "Worldwide_Gross": "$355.01 "
+        },
+        {
+            "Film": "Enchanted",
+            "Genre": "Comedy",
+            "Worldwide_Gross": "$340.49 "
+        },
+        {
+            "Film": "The Proposal",
+            "Genre": "Comedy",
+            "Worldwide_Gross": "$314.70 "
+        },
+        {
+            "Film": "Sex and the City Two",
+            "Genre": "Comedy",
+            "Worldwide_Gross": "$288.35 "
+        }
+    ],
+    "Top 10 Profitable Movies": [
+        {
+            "Film": "Fireproof",
+            "Genre": "Drama",
+            "Profitability": "66.934"
+        },
+        {
+            "Film": "High School Musical 3: Senior Year",
+            "Genre": "Comedy",
+            "Profitability": "22.91313646"
+        },
+        {
+            "Film": "The Twilight Saga: New Moon",
+            "Genre": "Drama",
+            "Profitability": "14.1964"
+        },
+        {
+            "Film": "Waitress",
+            "Genre": "Romance",
+            "Profitability": "11.0897415"
+        },
+        {
+            "Film": "Twilight",
+            "Genre": "Romance",
+            "Profitability": "10.18002703"
+        },
+        {
+            "Film": "Mamma Mia!",
+            "Genre": "Comedy",
+            "Profitability": "9.234453864"
+        },
+        {
+            "Film": "Midnight in Paris",
+            "Genre": "Romence",
+            "Profitability": "8.744705882"
+        },
+        {
+            "Film": "(500) Days of Summer",
+            "Genre": "comedy",
+            "Profitability": "8.096"
+        },
+        {
+            "Film": "The Proposal",
+            "Genre": "Comedy",
+            "Profitability": "7.8675"
+        },
+        {
+            "Film": "Sex and the City",
+            "Genre": "Comedy",
+            "Profitability": "7.221795791"
+        }
+    ],
+    "Top 10 Audience Score Percentages": [
+        {
+            "Film": "WALL-E",
+            "Genre": "Animation",
+            "Audience_Score_Pct": "89"
+        },
+        {
+            "Film": "A Dangerous Method",
+            "Genre": "Drama",
+            "Audience_Score_Pct": "89"
+        },
+        {
+            "Film": "Tangled",
+            "Genre": "Animation",
+            "Audience_Score_Pct": "88"
+        },
+        {
+            "Film": "My Week with Marilyn",
+            "Genre": "Drama",
+            "Audience_Score_Pct": "84"
+        },
+        {
+            "Film": "Midnight in Paris",
+            "Genre": "Romence",
+            "Audience_Score_Pct": "84"
+        },
+        {
+            "Film": "Across the Universe",
+            "Genre": "romance",
+            "Audience_Score_Pct": "84"
+        },
+        {
+            "Film": "Knocked Up",
+            "Genre": "Comedy",
+            "Audience_Score_Pct": "83"
+        },
+        {
+            "Film": "Twilight",
+            "Genre": "Romance",
+            "Audience_Score_Pct": "82"
+        },
+        {
+            "Film": "P.S. I Love You",
+            "Genre": "Romance",
+            "Audience_Score_Pct": "82"
+        },
+        {
+            "Film": "The Curious Case of Benjamin Button",
+            "Genre": "Fantasy",
+            "Audience_Score_Pct": "81"
+        }
+    ]
+}
