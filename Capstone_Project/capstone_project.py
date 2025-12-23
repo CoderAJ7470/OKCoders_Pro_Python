@@ -5,7 +5,7 @@
 # Send an email with all five posts and their respective links
 # Optionally send a ntfy push notification
 
-import requests, sqlite3, ezgmail
+import requests, sqlite3, ezgmail, os
 from pathlib import Path
 
 # Since we are using VS Code, one of its quirks with Python files is that the full URL needs to be resolved to specify the exact location where you want to create the .db file, if it does not exist already. So this is why we are creating the full file path first before using it down in the read_posts_into_db function below
@@ -67,16 +67,30 @@ def print_movie_db():
         print(row) # prints each tuple (row) in the db
         
     movie_db.close()
-    
-def send_report_to_email():
-    # Initialize ezgmail only if token.json doesn't exist
-    token_path = Path(__name__).resolve().parent / 'token.json'
-    
-    if not token_path.exists():
-        ezgmail.init()
 
-    # Fetch the latest 5 posts from the database
-    conn = sqlite3.connect(db_path)
+# Sends an email containing the latest five posts
+def send_posts_through_email():
+    # Ensure BASE_DIR is the folder where this script lives
+    try:
+        BASE_DIR = Path(__file__).resolve().parent
+    except NameError:
+        BASE_DIR = Path.cwd()
+
+    # Force current working directory to script folder
+    os.chdir(BASE_DIR)
+
+    db_path_local = BASE_DIR / 'capstone_hn_posts.db'
+    token_path = BASE_DIR / 'token.json'
+    credentials_path = BASE_DIR / 'credentials.json'
+
+    # Initialize ezgmail if token.json doesn't exist
+    if not token_path.exists():
+        ezgmail.init(credentialsFile=str(credentials_path))
+    else:
+        ezgmail.init()  # token.json exists, safe to init without credentialsFile
+
+    # Fetch posts from the db
+    conn = sqlite3.connect(db_path_local)
     cursor = conn.cursor()
     cursor.execute('SELECT title, link, posted_by, posted_time FROM latest_posts ORDER BY id DESC LIMIT 5')
     rows = cursor.fetchall()
@@ -89,14 +103,14 @@ def send_report_to_email():
         email_body += f'   Posted by: {posted_by}\n'
         email_body += f'   Link: {link}\n\n'
 
-    # Send it
     ezgmail.send('aj1710m@gmail.com', 'Latest Five HN Posts', email_body)
     
     print('\nEmail sent successfully!\n')
+
     
 def main():
     get_latest_five_posts()
-    send_report_to_email()
+    send_posts_through_email()
 
 if __name__ == '__main__':
     main()
