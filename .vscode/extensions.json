@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "charliermarsh.ruff",
+    "codezombiech.gitignore",
+    "eamodio.gitlens",
+    "EditorConfig.EditorConfig",
+    "edwinhuish.better-comments-next",
+    "mechatroner.rainbow-csv",
+    "ms-python.python",
+    "ryu1kn.partial-diff",
+    "yzhang.markdown-all-in-one",
+  ]
+}

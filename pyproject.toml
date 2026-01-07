@@ -1,0 +1,19 @@
+[project]
+name = "aj-okcoders-pro-python"
+version = "0.1.0"
+authors = [
+    { name = "AJoshi", email = "ameyasureshjoshi@gmail.com" }
+]
+
+requires-python = ">=3.13,<3.14"
+
+dependencies = [
+    "ezgmail>=2025.11.11",
+    "python-decouple>=3.8",
+    "requests>=2.32.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.14.10",
+]

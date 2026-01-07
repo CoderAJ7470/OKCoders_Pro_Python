@@ -9,7 +9,7 @@ venv/
 .venv/
 
 # IDE / Editor settings
-.vscode/
+# .vscode/
 .idea/
 
 # Windows system files
